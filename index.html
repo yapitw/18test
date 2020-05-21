@@ -8,26 +8,34 @@
     <script src="shake.js"></script>
 </head>
 <style>
-    html{
-        margin: 0;
-        padding: 0;
-    }
     body, html {
         height: 100%;
         width: 100%;
         margin: 0;
+        padding: 0;
+        font-family: arial, sans-serif;
+    }
+    
+    body {
         padding: 1em;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    #countDisplay {
+        font-size: 72px;
     }
 </style>
 <body>
-    <h1>TEST v0.0.5 </h1>
+    <h1>TEST v0.0.6 </h1>
     <h1 id="countDisplay">0</h1>
 </body>
 <script>
     var count = 0;
 
     //listen to shake event
-    var shakeEvent = new Shake({ threshold: 20, timeout: 100 });
+    var shakeEvent = new Shake({ threshold: 30, timeout: 100 });
     shakeEvent.start();
     window.addEventListener('shake', function () {
         count++
