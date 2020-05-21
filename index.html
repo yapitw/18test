@@ -20,15 +20,14 @@
     }
 </style>
 <body>
-    v0.0.3
-    <h1>TEST</h1>
+    <h1>TEST v0.0.5 </h1>
     <h1 id="countDisplay">0</h1>
 </body>
 <script>
     var count = 0;
 
     //listen to shake event
-    var shakeEvent = new Shake({ threshold: 50, timeout: 100 });
+    var shakeEvent = new Shake({ threshold: 20, timeout: 100 });
     shakeEvent.start();
     window.addEventListener('shake', function () {
         count++
