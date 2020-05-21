@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="shake.js"></script>
+</head>
+
+<body>
+    <h1>TEST</h1>
+    <h1 id="countDisplay"></h1>
+</body>
+<script>
+    var count = 0;
+
+    //listen to shake event
+    var shakeEvent = new Shake({ threshold: 10, timeout: 10 });
+    shakeEvent.start();
+    window.addEventListener('shake', function () {
+        count++
+        countDisplay.innerText = count
+    }, false);
+
+    //stop listening
+    function stopShake() {
+        shakeEvent.stop();
+    }
+
+    //check if shake is supported or not.
+    if (!("ondevicemotion" in window)) { alert("Not Supported"); }
+
+</script>
+
+</html>
