@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="shake.js"></script>
+</head>
+<style>
+    body,
+    html {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        font-family: arial, sans-serif;
+    }
+
+    body {
+        padding: 1em;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #countDisplay {
+        font-size: 120px;
+    }
+</style>
+
+<body>
+    <h1>TEST v0.1.7 </h1>
+    <h1 id="countDisplay">0</h1>
+    <button id="getPermissionButton">EVENT</button>
+</body>
+<script>
+    function getPermission(cb) {
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            DeviceMotionEvent.requestPermission()
+                .then(permissionState => {
+                    if(typeof cb  === 'function)cb();
+                })
+                .catch(console.error);
+        } else {
+            if(typeof cb  === 'function)cb();
+        }
+    }
+                      
+    document.getElementById("getPermissionButton").addEventListener("click", function(){
+      getPermission(function(){
+        window.open("//:google.com", "_self");
+      })
+    })
+
+</script>
+
+</html>
