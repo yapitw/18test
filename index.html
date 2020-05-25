@@ -29,25 +29,25 @@
     }
 </style>
 <body>
-    <h1>TEST v0.0.9 </h1>
+    <h1>TEST v0.1.0 </h1>
     <h1 id="countDisplay">0</h1>
     <button onclick="onClick()">EVENT</button>
 </body>
 <script>
     // feature detect
-    function onClick() {
-        if (typeof DeviceMotionEvent.requestPermission === 'function') {
-          DeviceMotionEvent.requestPermission()
-            .then(permissionState => {
-              if (permissionState === 'granted') {
-                window.addEventListener('devicemotion', () => {});
-              }
-            })
-            .catch(console.error);
-        } else {
-          // handle regular non iOS 13+ devices
-        }
+   
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+      DeviceMotionEvent.requestPermission()
+        .then(permissionState => {
+          if (permissionState === 'granted') {
+            window.addEventListener('devicemotion', () => {});
+          }
+        })
+        .catch(console.error);
+    } else {
+      // handle regular non iOS 13+ devices
     }
+
    
     
     var count = 0;
