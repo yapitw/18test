@@ -1,79 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <script src="shake.js"></script>
+  <meta charset="UTF-8">
+  <title>CodePen - Detect iOS Version</title>
+  <link rel="stylesheet" href="./style.css">
+
 </head>
-<style>
-    body,
-    html {
-        height: 100%;
-        width: 100%;
-        margin: 0;
-        padding: 0;
-        font-family: arial, sans-serif;
-    }
-
-    body {
-        padding: 1em;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #countDisplay {
-        font-size: 120px;
-    }
-</style>
-
 <body>
-    <h1>TEST2 v0.0.9 </h1>
-    <button id="getPermissionButton">EVENT</button>
+<!-- partial:index.partial.html -->
+<h1 id="versionDisplay"></h1>
+
+<button id="getPermissionButton">繼續</button>
+<!-- partial -->
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script><script  src="./script.js"></script>
+
 </body>
-<script>
-//     if (typeof DeviceMotionEvent.requestPermission === 'function') {
-//         DeviceMotionEvent.requestPermission()
-//             .then(permissionState => {
-//                 if (permissionState === "granted") {
-//                     alert("granted");
-//                 } else {
-//                     alert("not granted")
-//                 }
-//             })
-//     }
-
-    
-    
-    function getPermission(cb) {
-        if (typeof DeviceMotionEvent.requestPermission === 'function') {
-            DeviceMotionEvent.requestPermission()
-                .then(permissionState => {
-                    if (permissionState === "granted") {
-                        alert("已開啟晃動感測")
-                        if(typeof cb  === 'function')cb();
-                    } else {
-                        alert("未開啟晃動感測")
-                        if(typeof cb  === 'function')cb();
-                    }
-
-                })
-                .catch(console.error);
-        } else {
-            if(typeof cb  === 'function')cb();
-        }
-    }
-                      
-    var button = document.getElementById("getPermissionButton")
-    button.addEventListener("click", function(){
-      getPermission(function(){
-        window.open("//google.com", "_self");
-      })
-    })
-
-</script>
-
 </html>
