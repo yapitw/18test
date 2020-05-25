@@ -52,9 +52,16 @@
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
                 .then(permissionState => {
-                    if(confirm("下一步")) {
-                        if(typeof cb  === 'function')cb();
+                    if (permissionState === "granted") {
+                        if(alert("已開啟晃動感測")) {
+                            if(typeof cb  === 'function')cb();
+                        }
+                    } else {
+                        if(alert("未開啟晃動感測")) {
+                            if(typeof cb  === 'function')cb();
+                        }    
                     }
+
                 })
                 .catch(console.error);
         } else {
