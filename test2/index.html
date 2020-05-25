@@ -52,7 +52,9 @@
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
                 .then(permissionState => {
-                    if(typeof cb  === 'function')cb();
+                    if(confirm("下一步")) {
+                        if(typeof cb  === 'function')cb();
+                    }
                 })
                 .catch(console.error);
         } else {
