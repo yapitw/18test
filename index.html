@@ -29,7 +29,7 @@
     }
 </style>
 <body>
-    <h1>TEST v0.1.0 </h1>
+    <h1>TEST v0.1.1 </h1>
     <h1 id="countDisplay">0</h1>
     <button onclick="onClick()">EVENT</button>
 </body>
@@ -40,7 +40,10 @@
       DeviceMotionEvent.requestPermission()
         .then(permissionState => {
           if (permissionState === 'granted') {
-            window.addEventListener('devicemotion', () => {});
+                  window.addEventListener('shake', function () {
+                    count++
+                    countDisplay.innerText = count
+                }, false);
           }
         })
         .catch(console.error);
@@ -55,10 +58,6 @@
     //listen to shake event
     var shakeEvent = new Shake({ threshold: 25, timeout: 100 });
     shakeEvent.start();
-    window.addEventListener('shake', function () {
-        count++
-        countDisplay.innerText = count
-    }, false);
 
     //stop listening
     function stopShake() {
