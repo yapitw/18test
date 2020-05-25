@@ -31,8 +31,7 @@
 </style>
 
 <body>
-    <h1>TEST v0.1.7 </h1>
-    <h1 id="countDisplay">0</h1>
+    <h1>TEST2 v0.0.2 </h1>
     <button id="getPermissionButton">EVENT</button>
 </body>
 <script>
@@ -48,7 +47,8 @@
         }
     }
                       
-    document.getElementById("getPermissionButton").addEventListener("click", function(){
+    var button = document.getElementById("getPermissionButton")
+    button.addEventListener("click", function(){
       getPermission(function(){
         window.open("//:google.com", "_self");
       })
