@@ -8,14 +8,15 @@
     <script src="shake.js"></script>
 </head>
 <style>
-    body, html {
+    body,
+    html {
         height: 100%;
         width: 100%;
         margin: 0;
         padding: 0;
         font-family: arial, sans-serif;
     }
-    
+
     body {
         padding: 1em;
         display: flex;
@@ -23,36 +24,43 @@
         justify-content: center;
         align-items: center;
     }
-    
+
     #countDisplay {
         font-size: 120px;
     }
 </style>
+
 <body>
-    <h1>TEST v0.1.1 </h1>
+    <h1>TEST v0.1.2 </h1>
     <h1 id="countDisplay">0</h1>
     <button onclick="onClick()">EVENT</button>
 </body>
 <script>
     // feature detect
-   
-    if (typeof DeviceMotionEvent.requestPermission === 'function') {
-      DeviceMotionEvent.requestPermission()
-        .then(permissionState => {
-          if (permissionState === 'granted') {
-                  window.addEventListener('shake', function () {
-                    count++
-                    countDisplay.innerText = count
-                }, false);
-          }
-        })
-        .catch(console.error);
-    } else {
-      // handle regular non iOS 13+ devices
+    
+    function onClick() {
+        if (typeof DeviceMotionEvent.requestPermission === 'function') {
+            DeviceMotionEvent.requestPermission()
+                .then(permissionState => {
+                    if (permissionState === 'granted') {
+                        window.addEventListener('shake', function () {
+                            count++
+                            countDisplay.innerText = count
+                        }, false);
+                    }
+                })
+                .catch(console.error);
+        } else {
+            // handle regular non iOS 13+ devices
+            window.addEventListener('shake', function () {
+                count++
+                countDisplay.innerText = count
+            }, false);
+        }
+    
     }
 
-   
-    
+
     var count = 0;
 
     //listen to shake event
