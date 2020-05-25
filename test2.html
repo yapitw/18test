@@ -35,6 +35,19 @@
     <button id="getPermissionButton">EVENT</button>
 </body>
 <script>
+    if (typeof DeviceMotionEvent.requestPermission === 'function') {
+        DeviceMotionEvent.requestPermission()
+            .then(permissionState => {
+                if (permissionState === "granted") {
+                    alert("granted");
+                } else {
+                    alert("not granted")
+                }
+            })
+    }
+
+    
+    
     function getPermission(cb) {
         if (typeof DeviceMotionEvent.requestPermission === 'function') {
             DeviceMotionEvent.requestPermission()
